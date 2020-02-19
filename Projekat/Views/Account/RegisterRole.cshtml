@@ -1,0 +1,36 @@
+﻿@model  Projekat.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register Role";
+}
+
+<div class="jumbotron">
+
+    @using (Html.BeginForm("RegisterRole", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Dodela uloga</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Odaberi korisnika", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("UserName")
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Odaberi ulogu", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("Name")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true">
+                        Sačuvaj
+                    </span>
+                </button>
+            </div>
+        </div>
+    }
+</div>

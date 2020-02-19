@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="59d36db5314f4d7cb7153981f2638b78" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="salonDBModel.tblKategorija" Width="1.5" PointX="2.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonDBModel.tblKomadNamestaja" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonDBModel.tblKorisnik" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonDBModel.tblRacun" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonDBModel.tblSaloni" Width="1.5" PointX="2.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonDBModel.tblStavke" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonDBModel.tblStavkeNaRacunu" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="salonDBModel.tblUloga" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="salonDBModel.FK_tblKomadNamestaja_tblKategorija1" ManuallyRouted="false" />
+        <AssociationConnector Association="salonDBModel.FK_tblKomadNamestaja_tblSaloni" ManuallyRouted="false" />
+        <AssociationConnector Association="salonDBModel.FK_tblKorisnik_tblUloga" ManuallyRouted="false" />
+        <AssociationConnector Association="salonDBModel.FK_tblStavkeNaRacunu_tblRacun" ManuallyRouted="false" />
+        <AssociationConnector Association="salonDBModel.FK_tblStavkeNaRacunu_tblStavke" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

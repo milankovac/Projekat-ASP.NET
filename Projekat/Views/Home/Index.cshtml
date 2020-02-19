@@ -1,0 +1,14 @@
+﻿@model Projekat.tblSaloni
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@if (!User.Identity.IsAuthenticated)
+{
+    @Html.DropDownListFor(model => model.ID, ViewBag.ListaSalona as SelectList, "Izaberi salon", new { @class = "form-control" })
+}
+    <div class="jumbotron">
+        <img style="height:250px;width:500px;" src="~/slike/slika1.jpg" />
+        <img style="height:250px;width:500px;float:right" src="~/slike/slika2.jpg" />
+    </div>
+

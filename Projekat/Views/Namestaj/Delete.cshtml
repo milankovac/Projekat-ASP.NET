@@ -1,0 +1,95 @@
+﻿@model Projekat.tblKomadNamestaja
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<div class="jumbotron">
+    <h4>Obrisati namestaj</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sifra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sifra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZemljaProizvodnje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZemljaProizvodnje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JedinicnaCena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JedinicnaCena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaspolozivaKolicina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaspolozivaKolicina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Slika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slika)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblKategorija.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblKategorija.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblSaloni.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblSaloni.Naziv)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <a href="@Url.Action("Index", "Namestaj", new { id = Model.ID })" class="btn btn-success">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true">
+            Nazad
+        </span>
+
+    </a>
+    <button type="submit" class="btn btn-danger">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"onclick="return confirm ('Da li sigurno zelite da obrisete')">
+            Izbriši
+        </span>
+    </button>
+</div>
+    }
+</div>

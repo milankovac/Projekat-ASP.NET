@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Projekat.tblKategorija>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="jumbotron">
+        @if (User.IsInRole("Administrator"))
+        {
+            <a href=" @Url.Action("Create", "Kategorija")" class="btn btn-primary b">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"> Dodaj</span>
+            </a><br /><br />
+        }
+        @using (Html.BeginForm("Index","Kategorija",FormMethod.Get))
+        {
+            @Html.TextBox("srch")
+    <button class="btn btn-group-sm btn-success">
+        <span class="glyphicon glyphicon-search" aria-hidden="true">
+            Pretrazi
+        </span>
+    </button>
+        }
+            <table class="table table-bordered" style="width:auto;">
+                <tr>
+                    <th>#</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Naziv)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Opis)
+                    </th>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <th></th>
+                    }
+                    </tr>
+
+                @{
+                    int i = 1; foreach (var item in Model)
+                    {
+                                <tr>
+
+                                    <td>@i</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Naziv)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Opis)
+                                    </td>
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                        <td>
+                                            <a href="@Url.Action("Edit", "Kategorija", new { id = item.ID })" class="btn btn-primary">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true">
+                                                    Izmeni
+                                                </span>
+
+                                            </a>
+                                            <a href="@Url.Action("Details", "Kategorija", new { id = item.ID })" class="btn btn-warning">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true">
+                                                    Detalji
+                                                </span>
+
+                                            </a>
+
+                                            <a href="@Url.Action("Delete", "Kategorija", new { id = item.ID })" class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true">
+                                                    Obrisi
+                                                </span>
+
+                                            </a>
+
+                                        </td>
+                                    }
+                                    </tr>
+i++;
+                    }
+                }
+
+            </table>
+        </div>

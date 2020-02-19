@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="salonDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblKategorija">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblKomadNamestaja" Relationship="Self.FK_tblKomadNamestaja_tblKategorija1" FromRole="tblKategorija" ToRole="tblKomadNamestaja" />
+  </EntityType>
+  <EntityType Name="tblKomadNamestaja">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sifra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZemljaProizvodnje" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="JedinicnaCena" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="RaspolozivaKolicina" Type="Int32" Nullable="false" />
+    <Property Name="SalonID" Type="Int32" Nullable="false" />
+    <Property Name="KategorijaID" Type="Int32" Nullable="false" />
+    <Property Name="Slika" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblKategorija" Relationship="Self.FK_tblKomadNamestaja_tblKategorija1" FromRole="tblKomadNamestaja" ToRole="tblKategorija" />
+    <NavigationProperty Name="tblSaloni" Relationship="Self.FK_tblKomadNamestaja_tblSaloni" FromRole="tblKomadNamestaja" ToRole="tblSaloni" />
+  </EntityType>
+  <EntityType Name="tblKorisnik">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UlogaID" Type="Int32" Nullable="false" />
+    <Property Name="KorisnickoIme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblUloga" Relationship="Self.FK_tblKorisnik_tblUloga" FromRole="tblKorisnik" ToRole="tblUloga" />
+  </EntityType>
+  <EntityType Name="tblRacun">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Porez" Type="Int32" Nullable="false" />
+    <Property Name="CenaSaPorezom" Type="Int32" Nullable="false" />
+    <Property Name="DatumKupovine" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Kupac" Type="String" MaxLength="101" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblStavkeNaRacunu" Relationship="Self.FK_tblStavkeNaRacunu_tblRacun" FromRole="tblRacun" ToRole="tblStavkeNaRacunu" />
+  </EntityType>
+  <EntityType Name="tblSaloni">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Vlasnik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WebStranica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PIB" Type="Int32" Nullable="false" />
+    <Property Name="BrojZiroRacuna" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblKomadNamestaja" Relationship="Self.FK_tblKomadNamestaja_tblSaloni" FromRole="tblSaloni" ToRole="tblKomadNamestaja" />
+  </EntityType>
+  <EntityType Name="tblStavke">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KomadNamestaja" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KomCena" Type="Int32" Nullable="false" />
+    <Property Name="Kolicina" Type="Int32" Nullable="false" />
+    <Property Name="NazivSalona" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblStavkeNaRacunu" Relationship="Self.FK_tblStavkeNaRacunu_tblStavke" FromRole="tblStavke" ToRole="tblStavkeNaRacunu" />
+  </EntityType>
+  <EntityType Name="tblStavkeNaRacunu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RacunID" Type="Int32" Nullable="false" />
+    <Property Name="StavkaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblRacun" Relationship="Self.FK_tblStavkeNaRacunu_tblRacun" FromRole="tblStavkeNaRacunu" ToRole="tblRacun" />
+    <NavigationProperty Name="tblStavke" Relationship="Self.FK_tblStavkeNaRacunu_tblStavke" FromRole="tblStavkeNaRacunu" ToRole="tblStavke" />
+  </EntityType>
+  <EntityType Name="tblUloga">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblKorisnik" Relationship="Self.FK_tblKorisnik_tblUloga" FromRole="tblUloga" ToRole="tblKorisnik" />
+  </EntityType>
+  <Association Name="FK_tblKomadNamestaja_tblKategorija1">
+    <End Role="tblKategorija" Type="Self.tblKategorija" Multiplicity="1" />
+    <End Role="tblKomadNamestaja" Type="Self.tblKomadNamestaja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKategorija">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblKomadNamestaja">
+        <PropertyRef Name="KategorijaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKomadNamestaja_tblSaloni">
+    <End Role="tblSaloni" Type="Self.tblSaloni" Multiplicity="1" />
+    <End Role="tblKomadNamestaja" Type="Self.tblKomadNamestaja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSaloni">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblKomadNamestaja">
+        <PropertyRef Name="SalonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKorisnik_tblUloga">
+    <End Role="tblUloga" Type="Self.tblUloga" Multiplicity="1" />
+    <End Role="tblKorisnik" Type="Self.tblKorisnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUloga">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblKorisnik">
+        <PropertyRef Name="UlogaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblStavkeNaRacunu_tblRacun">
+    <End Role="tblRacun" Type="Self.tblRacun" Multiplicity="1" />
+    <End Role="tblStavkeNaRacunu" Type="Self.tblStavkeNaRacunu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRacun">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblStavkeNaRacunu">
+        <PropertyRef Name="RacunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblStavkeNaRacunu_tblStavke">
+    <End Role="tblStavke" Type="Self.tblStavke" Multiplicity="1" />
+    <End Role="tblStavkeNaRacunu" Type="Self.tblStavkeNaRacunu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStavke">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblStavkeNaRacunu">
+        <PropertyRef Name="StavkaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="salonDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblKategorija" EntityType="Self.tblKategorija" />
+    <EntitySet Name="tblKomadNamestaja" EntityType="Self.tblKomadNamestaja" />
+    <EntitySet Name="tblKorisnik" EntityType="Self.tblKorisnik" />
+    <EntitySet Name="tblRacun" EntityType="Self.tblRacun" />
+    <EntitySet Name="tblSaloni" EntityType="Self.tblSaloni" />
+    <EntitySet Name="tblStavke" EntityType="Self.tblStavke" />
+    <EntitySet Name="tblStavkeNaRacunu" EntityType="Self.tblStavkeNaRacunu" />
+    <EntitySet Name="tblUloga" EntityType="Self.tblUloga" />
+    <AssociationSet Name="FK_tblKomadNamestaja_tblKategorija1" Association="Self.FK_tblKomadNamestaja_tblKategorija1">
+      <End Role="tblKategorija" EntitySet="tblKategorija" />
+      <End Role="tblKomadNamestaja" EntitySet="tblKomadNamestaja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKomadNamestaja_tblSaloni" Association="Self.FK_tblKomadNamestaja_tblSaloni">
+      <End Role="tblSaloni" EntitySet="tblSaloni" />
+      <End Role="tblKomadNamestaja" EntitySet="tblKomadNamestaja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKorisnik_tblUloga" Association="Self.FK_tblKorisnik_tblUloga">
+      <End Role="tblUloga" EntitySet="tblUloga" />
+      <End Role="tblKorisnik" EntitySet="tblKorisnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblStavkeNaRacunu_tblRacun" Association="Self.FK_tblStavkeNaRacunu_tblRacun">
+      <End Role="tblRacun" EntitySet="tblRacun" />
+      <End Role="tblStavkeNaRacunu" EntitySet="tblStavkeNaRacunu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblStavkeNaRacunu_tblStavke" Association="Self.FK_tblStavkeNaRacunu_tblStavke">
+      <End Role="tblStavke" EntitySet="tblStavke" />
+      <End Role="tblStavkeNaRacunu" EntitySet="tblStavkeNaRacunu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Projekat.tblSaloni>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    <div class="jumbotron" style="position:relative;right:100px;width:1340px;">
+        @if (User.IsInRole("Administrator"))
+        {
+            <a href=" @Url.Action("Create", "Salon")" class="btn btn-primary b">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"> Dodaj</span>
+            </a><br /><br />
+        }
+            <table class="table table-bordered" style="text-align:center;font-size:12px;position:relative;right:50px;width:1325px;">
+                <tr>
+                    <th>#</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Naziv)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Vlasnik)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Adresa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefon)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WebStranica)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PIB)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BrojZiroRacuna)
+                    </th>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <th></th>
+                    }
+                    </tr>
+
+                @{int i = 1;
+
+                    foreach (var item in Model)
+                    {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Naziv)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Vlasnik)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Adresa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Telefon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.WebStranica)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PIB)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BrojZiroRacuna)
+                                    </td>
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                        <td>
+                                            <a href="@Url.Action("Edit", "Salon", new { id = item.ID })" class="btn btn-primary" style="width:90px">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true">
+                                                    Izmeni
+                                                </span>
+
+                                            </a>
+                                            <a href="@Url.Action("Details", "Salon", new { id = item.ID })" class="btn btn-warning" style="width:90px">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true">
+                                                    Detalji
+                                                </span>
+
+                                            </a>
+
+                                            <a href="@Url.Action("Delete", "Salon", new { id = item.ID })" class="btn btn-danger" style="width:90px">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true">
+                                                    Obrisi
+                                                </span>
+
+                                            </a>
+                                            
+                                        </td>
+                                    }
+                                    </tr>
+i++;
+                    }
+                }
+
+            </table>
+        </div>

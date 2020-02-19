@@ -1,0 +1,44 @@
+﻿@model Projekat.tblKategorija
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+    <div class="jumbotron">
+        <h4>Detalji</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Naziv)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Opis)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Opis)
+            </dd>
+
+        </dl>
+        <a href="@Url.Action("Index", "Kategorija", new { id = Model.ID })" class="btn btn-success">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true">
+                Nazad
+            </span>
+
+        </a>
+        <a href="@Url.Action("Edit", "Kategorija", new { id = Model.ID })" class="btn btn-primary">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true">
+                Izmeni
+            </span>
+
+        </a>
+
+    </div>
+
